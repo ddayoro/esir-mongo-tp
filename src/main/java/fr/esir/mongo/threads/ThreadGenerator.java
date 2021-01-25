@@ -9,7 +9,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
 
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -45,6 +45,8 @@ public class ThreadGenerator implements Processor {
       Thread newThread = Thread.builder()
               ._id(idString)
               .title(textGenerator.generateText(1))
+              .tags(generateTags())
+              .users(randomKnownUser)
               .build();
 
       knownThreads.put(idString, newThread);
@@ -54,6 +56,19 @@ public class ThreadGenerator implements Processor {
       log.warn("Cannot create thread, no user created yet.");
       return null;
     }
+  }
+
+  public List<String> generateTags() {
+    Random rand = new Random();
+    List<String> tags = new LinkedList<String>(Arrays.asList("DMB" ,"africa school", "Dance", "Abidjan", "MongoDB"));
+    List<String> tagsOut = new ArrayList<>();
+    int size = rand.nextInt(tags.size());
+    for (int i = 0 ; i < size ; i++) {
+      int index = rand.nextInt(tags.size());
+      tagsOut.add(tags.get(index));
+      tags.remove(index);
+    }
+    return tagsOut;
   }
 
   public Thread getRandomThread() {

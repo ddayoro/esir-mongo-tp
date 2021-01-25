@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import fr.esir.mongo.users.User;
+import fr.esir.mongo.threads.Thread;
 
 /**
  * @author lboutros
@@ -21,4 +23,9 @@ public class Post {
   private final String title;
 
   private final String content;
+
+  private final User author ;
+
+  private final Thread thread;
+
 }

@@ -13,6 +13,11 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+import fr.esir.mongo.text.TextGenerator;
+import fr.esir.mongo.threads.Thread;
+import fr.esir.mongo.threads.ThreadGenerator;
+import fr.esir.mongo.users.User;
+import fr.esir.mongo.users.UserGenerator;
 
 /**
  *
